@@ -31,6 +31,7 @@
 		8732508C16A388CF005CEFB3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8732508F16A388CF005CEFB3 /* TechChallengeFactors-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TechChallengeFactors-Prefix.pch"; sourceTree = "<group>"; };
 		8732509016A388CF005CEFB3 /* TechChallengeFactors.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TechChallengeFactors.1; sourceTree = "<group>"; };
+		8732509716A38BA1005CEFB3 /* factors.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = factors.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +49,7 @@
 		8732507A16A388CF005CEFB3 = {
 			isa = PBXGroup;
 			children = (
+				8732509716A38BA1005CEFB3 /* factors.txt */,
 				8732508B16A388CF005CEFB3 /* TechChallengeFactors */,
 				8732508816A388CF005CEFB3 /* Frameworks */,
 				8732508616A388CF005CEFB3 /* Products */,
