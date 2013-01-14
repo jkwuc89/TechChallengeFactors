@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'TechChallengeFactors' target in the 'TechChallengeFactors' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
