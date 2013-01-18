@@ -43,7 +43,27 @@ int main(int argc, const char * argv[]) {
                                    sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
         NSLog( @"%@ has %lu date/time stamps", inputFilePath, dateTimeStamps.count );
         
+        // Convert the date/time stamps to millisecond values using NSDate
+        NSDate *dateTime;
+        NSTimeInterval dateTimeInSeconds;
+        NSMutableArray *dateTimeValues = [[NSMutableArray alloc] initWithCapacity:dateTimeStamps.count];
         
+        // We need a date formatter to create NSDate objects from UTC timestamps
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+        [dateFormatter setLocale:[NSLocale systemLocale]];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+        
+        for ( NSString *dateTimeStamp in dateTimeStamps ) {
+            dateTime = [dateFormatter dateFromString:dateTimeStamp];
+            if ( dateTime ) {
+                dateTimeInSeconds = [dateTime timeIntervalSince1970];
+                long dateTimeInMilliseconds = (long)((dateTimeInSeconds * 1000.0) + 0.1);
+                NSLog( @"%@ = %f seconds = %lu ms", dateTimeStamp, dateTimeInSeconds, dateTimeInMilliseconds );
+                [dateTimeValues addObject:[NSNumber numberWithDouble:dateTimeInMilliseconds]];
+            }
+        }
+        NSLog( @"dateTimeValues array has %lu values", dateTimeValues.count );
     }
     return 0;
 }
