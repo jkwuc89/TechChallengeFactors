@@ -26,10 +26,8 @@ NSString* factor(long number) {
     long max = (long)sqrt( number );
     for( long factor = 1; factor <= max; ++factor ) { //test from 1 to the square root, or the int below it, inclusive.
         if ( number % factor == 0 ) {
-            // factors.add(factor);
             [factors addObject:[NSNumber numberWithLong:factor]];
             if ( factor != number/factor ) { // Don't add the square root twice!  Thanks Jon
-                // factors.add(number/factor);
                 [factors addObject:[NSNumber numberWithLong:( number / factor)]];
             }
         }
@@ -91,8 +89,6 @@ int main(int argc, const char * argv[]) {
         [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
         
         NSDate *dateTime;
-        NSTimeInterval dateTimeInSeconds;
-        NSString *factors;
         NSString *outputLine;
         
         // Get handle to result file.
@@ -104,18 +100,12 @@ int main(int argc, const char * argv[]) {
         for ( NSString *dateTimeStamp in dateTimeStamps ) {
             dateTime = [dateFormatter dateFromString:dateTimeStamp];
             if ( dateTime ) {
-                // Get date/time in seconds
-                dateTimeInSeconds = [dateTime timeIntervalSince1970];
                 // We purposefully add 0.1 to round ms value because the multiplication
                 // below comes up 1 ms short due NSTimeInterval's sub-ms precision.
-                long dateTimeInMilliseconds = (long)((dateTimeInSeconds * 1000.0) + 0.1);
-                // NSLog( @"%@ = %f seconds = %lu ms", dateTimeStamp, dateTimeInSeconds, dateTimeInMilliseconds );
+                long dateTimeInMilliseconds = (long)(([dateTime timeIntervalSince1970] * 1000.0) + 0.1);
 
-                // Get the factors
-                factors = factor( dateTimeInMilliseconds );
-                
-                // Create the output line
-                outputLine = [NSString stringWithFormat:@"%lu:%@\n", dateTimeInMilliseconds, factors];
+                // Create the output line using the date/time in ms and its factors
+                outputLine = [NSString stringWithFormat:@"%lu:%@\n", dateTimeInMilliseconds, factor( dateTimeInMilliseconds )];
 
                 // Write output line to result file
                 [resultFileHandle seekToEndOfFile];
