@@ -24,7 +24,7 @@ Execution Instructions
 4. At the prompt, enter cd TechChallengeFactors and then, press the Tab key
    to complete the directory.  Then, press Enter.
 5. Run the command cd Build/Products/Release/
-6. Run ./TechChallengeFactors <factors.txt> replacing <factors.txt> with
+6. Run ./TechChallengeFactors factors.txt replacing factors.txt with
    the fully qualified path to factors.txt downloaded from the
    challenge link above.  The results will be written to factorsresult.txt
    inside the current directory.
