@@ -18,9 +18,6 @@ Build Instructions
 
 Execution Instructions
 ----------------------
-By default, Xcode places the build into a rather obscure directory
-underneath your Libary directory.  Use the steps below to locate
-and run TechChallengeFactors on your Mac.
 1. Build the project (see build instructions above)
 2. Open a Terminal window
 3. Run the command cd ~/Library/Developer/Xcode/DerivedData
