@@ -34,25 +34,29 @@ NSString* factor(long number) {
     }
     
     // Sort the factors before returning them
-    NSArray *sortedFactors = [factors sortedArrayUsingComparator:^(NSNumber *firstNumber, NSNumber *secondNumber) {
-        long firstValue = [firstNumber longValue];
-        long secondValue = [secondNumber longValue];
-        if ( firstValue > secondValue ) {
-            return NSOrderedDescending;
-        } else if ( firstValue == secondValue ) {
-            return NSOrderedSame;
-        } else {
-            return NSOrderedAscending;
+    NSString *resultString = @"";
+    if ( factors.count > 2 ) {
+        NSArray *sortedFactors = [factors sortedArrayUsingComparator:^(NSNumber *firstNumber, NSNumber *secondNumber) {
+            long firstValue = [firstNumber longValue];
+            long secondValue = [secondNumber longValue];
+            if ( firstValue > secondValue ) {
+                return NSOrderedDescending;
+            } else if ( firstValue == secondValue ) {
+                return NSOrderedSame;
+            } else {
+                return NSOrderedAscending;
+            }
+        }];
+        
+        // Create and return comma delimited factor string
+        NSMutableString *factorString = [[NSMutableString alloc] init];
+        for ( NSNumber *factor in sortedFactors ) {
+            [factorString appendFormat:@"%@,", factor];
         }
-    }];
-
-    // Create and return comma delimited factor string
-    NSMutableString *factorString = [[NSMutableString alloc] init];
-    for ( NSNumber *factor in sortedFactors ) {
-        [factorString appendFormat:@"%@,", factor];
+        resultString = [factorString substringToIndex:factorString.length - 1];
     }
     
-    return [factorString substringToIndex:factorString.length - 1];
+    return resultString;
 }
 
 //
