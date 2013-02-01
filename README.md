@@ -11,7 +11,7 @@ Requirements
 
 Build Instructions
 ------------------
-1. Download this project from GitHub
+1. Clone this project from GitHub
 2. Open TechChallengeFactors.xcodeproj inside Xcode 4.5 or Xcode 4.6
 3. Select Product -> Clean from Xcode's menu bar
 4. Select Product -> Build For -> Archiving from the menu bar
